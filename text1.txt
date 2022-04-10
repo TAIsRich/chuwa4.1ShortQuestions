@@ -1,0 +1,3 @@
+•  What is maven role? what it be used to do?
+project management tool 
+ used for projects build, dependency and documentation. I
