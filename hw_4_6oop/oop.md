@@ -18,7 +18,6 @@ When subclasses want to extend themselves, the abstract class uses the extends k
 
 7)	Interface has no constructor.
 
-
 ### 2. What is the differences between overriding and overloading?
 
 Overriding :
