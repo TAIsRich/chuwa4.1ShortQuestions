@@ -6,13 +6,13 @@
 4.	Prototype Pattern
 5.	Builder Pattern.
 ## 2. Structural Design Pattern
-1.	Adapter Pattern
-2.	Bridge Pattern
-3.	Composite Pattern
-4.	Decorator Pattern
-5.	Facade Pattern
-6.	Flyweight Pattern
-7.	Proxy Pattern
+1. Adapter Pattern
+2. Bridge Pattern
+3. Composite Pattern
+4. Decorator Pattern
+5. Facade Pattern
+6. Flyweight Pattern
+7. Proxy Pattern
 ##3. Behavioral Design Pattern
 1. Chain Of Responsibility Pattern 
 2. Command Pattern
