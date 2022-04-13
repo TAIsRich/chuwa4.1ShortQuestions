@@ -1,4 +1,4 @@
-/*
+package Singleton;/*
  * @className: Singleton
  * @Description: eager singleton
  * */

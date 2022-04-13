@@ -1,3 +1,5 @@
+package Singleton;
+
 public final class LazySingletonV2 {
     private LazySingletonV2() {}
 

@@ -1,3 +1,5 @@
+package Singleton;
+
 public final class EagerSingletonV2 {
     // Constructor
     private EagerSingletonV2() {}
