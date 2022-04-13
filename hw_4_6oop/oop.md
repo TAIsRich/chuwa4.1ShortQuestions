@@ -14,7 +14,7 @@
 6.	Flyweight Pattern
 7.	Proxy Pattern
 ##3. Behavioral Design Pattern
-1. Chain Of Responsibility Pattern
+1. Chain Of Responsibility Pattern 
 2. Command Pattern
 3. Interpreter Pattern
 4. Iterator Pattern
