@@ -1,2 +1,12 @@
-package PACKAGE_NAME;public class LazySingleton {
+public final class LazySingleton {
+    private LazySingleton() {}
+
+    public static synchronized LazySingleton getInstance() {
+        if (instance == null) {
+            instance = new LazySingleton();
+        }
+        return instance;
+    }
+
+    private static LazySingleton instance;
 }

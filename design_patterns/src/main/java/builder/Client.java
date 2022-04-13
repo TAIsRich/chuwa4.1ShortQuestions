@@ -1,2 +1,15 @@
-package builder;public class Client {
+package builder;
+
+import java.util.Dictionary;
+
+public class Client {
+
+    public static void main(String[] args) {
+
+        Director director = new Director(new MobileBuilder());
+        Bike bike = director.construct();
+
+        System.out.println(bike.getFrame());
+        System.out.println(bike.getSeat());
+    }
 }

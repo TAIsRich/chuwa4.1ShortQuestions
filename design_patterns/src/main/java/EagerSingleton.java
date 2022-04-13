@@ -3,15 +3,15 @@
  * @Description: eager singleton
  * */
 
-public final class Singleton {
+public final class EagerSingleton {
 
     // Constructor
-    private Singleton() {}
+    private EagerSingleton() {}
 
     // Static Instance
-    private static Singleton instance = new Singleton();
+    private static EagerSingleton instance = new EagerSingleton();
 
-    public static Singleton getInstance() {
+    public static EagerSingleton getInstance() {
         return instance;
     }
 }
