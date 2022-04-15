@@ -1,6 +1,8 @@
 <font size = 5>
+
 What are the types of design patterns in Java?
 =
+
 1.Creational Design Pattern  
 Factory Pattern; Abstract Factory Pattern; Singleton Pattern; Prototype Pattern; Builder Pattern.
   
