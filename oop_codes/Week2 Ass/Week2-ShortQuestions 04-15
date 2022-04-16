@@ -1,0 +1,38 @@
+Week2-ShortQuestions 04-15
+
+What are the types of design patterns in Java?
+	Creational Design Pattern
+	Structural Design Pattern
+	Behavioral Design Pattern
+
+What are the SOLID Principles?
+	Single Responsibility: a class should only have one responsibility 
+	Open/Closed: open for extension, closed for modification
+	Liskov Substitution: if class A is a subtype of class B, we should be able to replace B with A without disrupting the behavior of our program.
+	Interface Segregation: larger interfaces should be split into smaller ones. By doing so, we can ensure that implementing classes only need to be concerned about the methods that are of interest to them.
+	Dependency Inversion: The principle of dependency inversion refers to the decoupling of software modules. This way, instead of high-level modules depending on low-level modules, both will depend on abstractions.
+
+
+How can you achieve thread-safe singleton patterns in Java?
+	use double-lock method
+	Example: 
+		public class Singleton {
+    		private Singleton(){}
+    // volatile is to guarantee the double lock
+    		private static volatile Singleton instance;
+    		public static Singleton getInstance(){
+        		if(instance == null){
+            		synchronized (Singleton.class){
+                		if(instance == null){
+                    		instance = new Singleton();
+                		}
+           			}
+        		}
+        		return instance;
+    		}
+		}
+What do you understand by the Open-Closed Principle (OCP)?
+	For my understanding, Open-Closed Principle is:
+	it's open for you to extend a existing class that is working well 
+	it's closed for you to modify the existing class that is working well
+	in summary, to keep our coding solid, when needs to updates features, we create a new class to extend the class that needs to be affected instead of modify it directly.
