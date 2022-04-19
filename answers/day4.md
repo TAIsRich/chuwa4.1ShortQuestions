@@ -161,51 +161,29 @@ Server error responses (500–599)
 
 ## 10. Design a collect of APIs for simple YouTube contains below modules
 
-    public static YouTube getService() throws GeneralSecurityException, IOException {
-        final NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
-        Credential credential = authorize(httpTransport);
-        return new YouTube.Builder(httpTransport, JSON_FACTORY, credential)
-            .setApplicationName(APPLICATION_NAME)
-            .build();
-    }
-
 List:
-YouTube youtubeService = getService();
-// Define and execute the API request
-YouTube.ChannelSections.List request = youtubeService.channelSections()
-.list("");
-ChannelSectionListResponse response = request.execute();
-System.out.println(response);
+GET https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=UC_x5XG1OV2P6uZZ5FSM9Ttw&key=[YOUR_API_KEY] HTTP/1.1
+
+Authorization: Bearer [YOUR_ACCESS_TOKEN]
+Accept: application/json
 
 Insert:
+POST https://youtube.googleapis.com/youtube/v3/channelSections?key=[YOUR_API_KEY] HTTP/1.1
 
-    YouTube youtubeService = getService();
-
-        // Define the ChannelSection object, which will be uploaded as the request body.
-        ChannelSection channelSection = new ChannelSection();
-
-        // Define and execute the API request
-        YouTube.ChannelSections.Insert request = youtubeService.channelSections()
-            .insert("", channelSection);
-        ChannelSection response = request.execute();
-        System.out.println(response);
-    }
+Authorization: Bearer [YOUR_ACCESS_TOKEN]
+Accept: application/json
+Content-Type: application/json
 
 Update:
 
-      YouTube youtubeService = getService();
+PUT https://youtube.googleapis.com/youtube/v3/channels?key=[YOUR_API_KEY] HTTP/1.1
 
-        // Define the ChannelSection object, which will be uploaded as the request body.
-        ChannelSection channelSection = new ChannelSection();
-
-        // Define and execute the API request
-        YouTube.ChannelSections.Update request = youtubeService.channelSections()
-            .update("", channelSection);
-        ChannelSection response = request.execute();
+Authorization: Bearer [YOUR_ACCESS_TOKEN]
+Accept: application/json
+Content-Type: application/json
 
 Delete:
-YouTube youtubeService = getService();
-// Define and execute the API request
-YouTube.ChannelSections.Delete request = youtubeService.channelSections()
-.delete("");
-request.execute();
+DELETE https://youtube.googleapis.com/youtube/v3/channelSections?key=[YOUR_API_KEY] HTTP/1.1
+
+Authorization: Bearer [YOUR_ACCESS_TOKEN]
+Accept: application/json
