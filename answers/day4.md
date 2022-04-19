@@ -158,3 +158,54 @@ Successful responses (200–299)
 Redirection messages (300–399)
 Client error responses (400–499)
 Server error responses (500–599)
+
+## 10. Design a collect of APIs for simple YouTube contains below modules
+
+    public static YouTube getService() throws GeneralSecurityException, IOException {
+        final NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
+        Credential credential = authorize(httpTransport);
+        return new YouTube.Builder(httpTransport, JSON_FACTORY, credential)
+            .setApplicationName(APPLICATION_NAME)
+            .build();
+    }
+
+List:
+YouTube youtubeService = getService();
+// Define and execute the API request
+YouTube.ChannelSections.List request = youtubeService.channelSections()
+.list("");
+ChannelSectionListResponse response = request.execute();
+System.out.println(response);
+
+Insert:
+
+    YouTube youtubeService = getService();
+
+        // Define the ChannelSection object, which will be uploaded as the request body.
+        ChannelSection channelSection = new ChannelSection();
+
+        // Define and execute the API request
+        YouTube.ChannelSections.Insert request = youtubeService.channelSections()
+            .insert("", channelSection);
+        ChannelSection response = request.execute();
+        System.out.println(response);
+    }
+
+Update:
+
+      YouTube youtubeService = getService();
+
+        // Define the ChannelSection object, which will be uploaded as the request body.
+        ChannelSection channelSection = new ChannelSection();
+
+        // Define and execute the API request
+        YouTube.ChannelSections.Update request = youtubeService.channelSections()
+            .update("", channelSection);
+        ChannelSection response = request.execute();
+
+Delete:
+YouTube youtubeService = getService();
+// Define and execute the API request
+YouTube.ChannelSections.Delete request = youtubeService.channelSections()
+.delete("");
+request.execute();
