@@ -158,3 +158,32 @@ Successful responses (200–299)
 Redirection messages (300–399)
 Client error responses (400–499)
 Server error responses (500–599)
+
+## 10. Design a collect of APIs for simple YouTube contains below modules
+
+List:
+GET https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=UC_x5XG1OV2P6uZZ5FSM9Ttw&key=[YOUR_API_KEY] HTTP/1.1
+
+Authorization: Bearer [YOUR_ACCESS_TOKEN]
+Accept: application/json
+
+Insert:
+POST https://youtube.googleapis.com/youtube/v3/channelSections?key=[YOUR_API_KEY] HTTP/1.1
+
+Authorization: Bearer [YOUR_ACCESS_TOKEN]
+Accept: application/json
+Content-Type: application/json
+
+Update:
+
+PUT https://youtube.googleapis.com/youtube/v3/channels?key=[YOUR_API_KEY] HTTP/1.1
+
+Authorization: Bearer [YOUR_ACCESS_TOKEN]
+Accept: application/json
+Content-Type: application/json
+
+Delete:
+DELETE https://youtube.googleapis.com/youtube/v3/channelSections?key=[YOUR_API_KEY] HTTP/1.1
+
+Authorization: Bearer [YOUR_ACCESS_TOKEN]
+Accept: application/json
