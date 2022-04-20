@@ -118,7 +118,7 @@
 
 4. **Which DI Injection is better way to use?**
 
-   Constructor injection is better way to use, because it makes code more robust. It allows us to create immutable objects, preventing `NullPointerException`s and other errors.
+   Constructor injection is better way to use, because it makes code more robust. It allows us to create immutable objects, preventing ```NullPointerException``` and other errors.
 
    
 
