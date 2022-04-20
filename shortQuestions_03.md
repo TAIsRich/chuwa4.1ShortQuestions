@@ -1,4 +1,4 @@
-# ShortQuestion_3
+# ShortQuestions_03
 
 1. **What are the types of design patterns in Java?**
 
@@ -47,5 +47,5 @@
 
 4. **What do you understand by the Open-Closed Principle (OCP)?**
 
-The code should be written in a way that new functionality can be added without changing the existing code. The change to one of the classes don't affect other depending classes. In a nutshell, the developer must need to change only a specific part of the code (a class or a function) every time a requirement changes. The open/closed principle is generally achieved by using **inheritance** and **polymorphism**.
+   The code should be written in a way that new functionality can be added without changing the existing code. The change to one of the classes don't affect other depending classes. In a nutshell, the developer must need to change only a specific part of the code (a class or a function) every time a requirement changes. The open/closed principle is generally achieved by using **inheritance** and **polymorphism**.
 
