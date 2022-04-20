@@ -94,3 +94,5 @@ Client error responses (400–499)
 
 Server error responses (500–599)
 
+## Design a collect of APIs for simple YouTube contains below modules
+c.ii.1: www.youtube.com/search=lady_gaga
