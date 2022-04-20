@@ -1,0 +1,146 @@
+What is IOC?
+	IOC is Inversion of Control: instead of let developer to control creating objects, Spring will take the control of creating opjects
+
+	common case: developer ---conrtol--> objects
+	IOC case: Spring(Framework) ---control--> objects
+
+What is DI?
+	DI stands for dependency Injection, is a way to achieve Inversion of Control
+
+How many DI injections in Spring Boot? please also give me code example.(只给你能展示这几种方法的例子就行，不用写完整的代码)
+	There are three methods to realize DI injection 	
+	1. Field Injection
+		Example Code:
+
+		@Component
+		public class NotificationSystem{
+
+			@Autowired
+			private List<User> userList;
+		}
+
+	2. Constructor Injection
+
+		@Autowired
+		public NotificationSystem(User user){
+			this.user = user;
+		}
+
+	3. Setter Injection
+
+		Setter is used in XML file
+		public class UserService {
+
+    		private MailService mailService;
+
+    		public void setMailService(MailService mailService) {
+        		this.mailService = mailService;
+        	}
+    	}
+
+    	<bean id="userService" class="com.itranswarp.learnjava.service.UserService">
+        	<property name="mailService" ref="mailService" />
+    	</bean>
+
+
+Which DI Injection is better way to use?
+	Annotation is a better way to use. 
+
+What are HTTP request methods?
+	GET: The GET method is used to retrieve information from the given server using a given URI. Requests using 	GET should only retrieve data and should have no other effect on the data.
+	PUT: Replaces all current representations of the target resource with the uploaded content.
+	POST: A POST request is used to send data to the server, for example, customer information, file upload, 			etc. using HTML forms.
+	HEAD: Same as GET, but transfers the status line and header section only.
+	DELETE: Removes all current representations of the target resource given by a URI.
+	OPTIONS: Describes the communication options for the target resource.
+	TRACE: Performs a message loop-back test along the path to the target resource.
+	CONNECT: Establishes a tunnel to the server identified by a given URI.
+
+What are differences between POST and PUT?
+	The POST method is used when you want to send some data to the server, for example, file update, form data, etc. 
+
+	The PUT method is used to request the server to store the included entity-body at a location specified by the given URL. 
+
+What is URL and What is URI?
+read this article again and again and again PLEASE (https://danielmiessler.com/study/difference-between-uri-url/)
+
+	URL(Uniform Resource Link): is a type of URI, locator, a name of resource with a protocol that tells you how to reach it
+	URI(Uniform Resource Identifier): is a string of characters that uniquely identify a name or a resource on the internet. identifier, a name of the resource
+
+
+What is path variable? and what is Request Parameter?
+	@PathVariable
+		Use @PathVariable annotation on a method argument to bind it to the value of a URI template variable.
+
+		For example, if we want to fetch an owner id from the www.xxx.com/owners/123, we should map our method in the controller as /owners/{ownerId}:
+
+		@RequestMapping(value="/owners/{ownerId}", method=RequestMethod.GET)
+		public String findOwner(@PathVariable(“ownerId”) int ownerId) {
+    		...
+		}
+	@RequestParam
+		Use @RequestParam annotation on a method argument to access servlet request parameters
+
+		For example, if we want to fetch an owner id from the www.xxx.com/owners?id=123, we should map our method in the controller as /owner and use @RequestParam to fetch the id
+
+		@RequestMapping("/owner")
+		public String handleRequest(@RequestParam("id") int userId) {
+    	...
+		}
+
+
+What are HTTP Response Status Codes?
+
+	1XX: informational response, it means that request was recieved and the process is continuing
+	2XX: Success, it means that the request was succesfully recieved, understood and accepted
+	3XX: Redirection, it means further actions must be taken in order to complete the request
+	4XX: Client Error, it means request contains incorrect syntax or cannot be filled
+	5XX: Server Error, it means server failed to fulfill an apparent valid request
+
+
+Collect of API design
+
+	Design a collect of APIs for simple YouTube contains below modules
+	Search. we have v1 and v2 two versions.
+		For version 1: https://Youtube.com/v1/search
+		For version 2: https://Youtube.com/v2/search
+
+	use keyword to search
+		https://Youtube.com/v2/search?q=keword
+
+	search one video between 04/01/2022 to now
+		https://Youtube.com/search?q=item&created:after:2021-01-19T00:00:00
+
+	search apple in category Tech or Fruit
+		https://Youtube.com/search?q=item&category=tech
+		https://Youtube.com/search?q=item&category=fruit
+
+	pagination. if we got 100 results, we split it to 10 each page.
+	and more if you can think out.
+		https://Youtube/items?limit=100&offset=10
+
+	members
+		https://Youtube/members/memberid
+
+	playlist
+		https://Youtube/members/memberid/playlist
+
+	add new one to playlist
+		https://Youtube/members/memberid/playlist/add/item?videoid
+
+	remove
+		https://Youtube/members/memberid/playlist/delete/item?videoid
+
+	comments
+		https://Youtube/members/memberid/playlist/comment/item?videoid
+
+	add new
+		https://Youtube/members/memberid/playlist/add/item?videoid
+
+	update old
+		https://Youtube/members/memberid/playlist/update/item?videoid
+
+	delete
+		https://Youtube/members/memberid/playlist/delete/item?videoid
+
+	
