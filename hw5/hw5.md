@@ -88,3 +88,6 @@ TRACE: The message body contains the request message as received by the server.
 The request succeeded, and a new resource was created as a result. This is typically the response sent after POST requests, or some PUT requests.
 
 10)Design a collect of APIs for simple YouTube contains below modules
+
+search api:
+GET https://www.googleapis.com/youtube/v3/search?part=snippet&key=[YOUR_API_KEY]&q=keyword
