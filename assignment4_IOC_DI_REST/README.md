@@ -226,3 +226,11 @@ comments
 add new
 update old
 delete
+
+
+GET https://youtube.googleapis.com/youtube/v3/search?part=NBA&key=[YOUR_API_KEY] HTTP/1.1
+
+Authorization: Bearer [YOUR_ACCESS_TOKEN]
+Accept: application/json
+
+
