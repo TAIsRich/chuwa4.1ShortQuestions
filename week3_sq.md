@@ -80,29 +80,104 @@
           3. search apple in category Tech or Fruit
           4. pagination. if we got 100 results, we split it to 10 each page.
           5. and more if you can think out.
+       
+       ```
+       GET /v1/search
+       GET /v2/search
+       Params:
+           keyword: the keyword to search
+           startDate: search start date
+           endDate: search end date
+           category: the category to search
+           pageToken: the page in the result should be returned
+           maxResults: The maxResults parameter specifies the maximum number of items that should be returned in the result set
+    
+       Response Code:
+           400: invalidVideoId
+       Response Body:
+           items[]: A list of results that match the search criteria.
+           pageinfo: The pageInfo object encapsulates paging information for the result set.      
+           pageInfo.totalResults: The total number of results in the result set
+           pageInfo.resultsPerPage: The number of results included in the API response.
+       ```
+       
     4. members
+
+       ```
+       GET /members
+       Params:
+              
+       Body:
+               
+       Response Code:
+           400: The pageToken parameter value is invalid. This error can occur if the page token used in the request has expired or is not recognized.
+       
+       Response Body:
+           items[]: list. A list of members that match the request criteria.
+       ```
+       
     5. playlist
        1. add new one to playlist
-       2. remove
+          
+          ```
+          PUT /playlists
+          Params:
+              
+          Body:
+              playlistId: the id parameter specifies the YouTube playlist ID for the playlist that is being added
+              userId: the id of user who try update the playlist
+              resourceId: the if of the resource which id being added 
+          
+          Response Code:
+              200: The comment is updated successfully
+              404: The comment ID does not exist
+          ```
+       
+       3. remove
+
+          ```
+          DELETE /playlists
+          Params:
+             playlistId: the id parameter specifies the YouTube playlist ID for the playlist that is being deleted.
+          Response Code:
+             204: The playList is deleted successfully
+             404: The playlist identified with the request's id parameter cannot be found
+          ```
+          
     6. comments
        1. add new
+          ```
+          POST /comments
+          Params:
+          Body:
+               username: String, the name of user
+               resourceId: the id of the resource which user want to comment
+               content: the content of comment  
+          Response Code:
+             200: The comment is added successfully
+             400: The comment is added unsuccessfully
+             404: the resource not found
+          Response Body:
+             commentId: The ID of the comment. 
+          ```
        2. update old
+          ```
+          PUT /comments/{commentId}
+          Params:
+              commentId: the ID of the comment
+          Body:
+              content: The comment content
+          Response Code:
+              200: The comment is updated successfully
+              404: The comment ID does not exist
+          ```
        3. delete
-    ```
-    PUT /comments/{commentId}
-    Params:
-      commentId: the ID of the comment
-      body:
-        content: The comment content
-    Response Code:
-      200: The comment is updated successfully
-      404: The comment ID does not exist
-    
-    DELETE /comments/{commentId}
-    Params:
-      commentId: the ID of the comment
-    Response Code:
-      200: The comment is deleted successfully
-      404: The comment ID does not exist
-    ```
+          ```
+          DELETE /comments/{commentId}
+          Params:
+             commentId: the ID of the comment
+          Response Code:
+             200: The comment is deleted successfully
+             404: The comment ID does not exist
+          ```
     
