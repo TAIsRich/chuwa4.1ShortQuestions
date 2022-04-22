@@ -1,0 +1,5 @@
+https://facebook.com/v1/ for version 1
+
+htpps://facebook.com/v2 for version 2
+Get / v12.0/{ group-id} HTTP/1.1
+HOST: graph.facebook.com
