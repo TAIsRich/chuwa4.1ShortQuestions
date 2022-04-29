@@ -141,23 +141,30 @@ https://docs.jboss.org/hibernate/annotations/3.5/reference/en/html/entity.html#e
 
 # What is the JPA Naming conversation? (check below pictures)
 
-![jpa_naming_convetion](https://github.com/HuanWangGATECH/chuwa4.1ShortQuestions/blob/huan_wang/assignment5/repository.png)
+![jpa_naming_convetion](https://github.com/HuanWangGATECH/chuwa4.1ShortQuestions/blob/huan_wang/assignment5/jpa_naming_convention.png)
 
 https://www.java4coding.com/contents/spring/springdatajpa/spring-data-jpa-method-naming-conventions
 
 # How many JPA methods you know, list all. (check below pictures)
+
+![jpa_methods](https://github.com/HuanWangGATECH/chuwa4.1ShortQuestions/blob/huan_wang/assignment5/jpa_methods.png)
+
 
 https://www.amitph.com/spring-data-jpa-query-methods/
 
 
 # How to write your own query with parameter?
 
+![query_parameter](https://github.com/HuanWangGATECH/chuwa4.1ShortQuestions/blob/huan_wang/assignment5/query_with_parameter.png)
 https://nullbeans.com/how-to-configure-query-parameters-in-spring-controllers/
 https://www.baeldung.com/spring-request-param
 
 
 
 # What is pagination? (check below pictures)
+
+![repository](https://github.com/HuanWangGATECH/chuwa4.1ShortQuestions/blob/huan_wang/assignment5/repository.png)
+![pagination](https://github.com/HuanWangGATECH/chuwa4.1ShortQuestions/blob/huan_wang/assignment5/pagination.png)
 
 
 https://howtodoinjava.com/spring-boot2/pagination-sorting-example/#:~:text=Paging%20and%20sorting%20is%20mostly,multiple%20fields%20in%20the%20table.
