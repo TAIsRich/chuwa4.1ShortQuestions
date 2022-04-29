@@ -141,6 +141,7 @@ https://docs.jboss.org/hibernate/annotations/3.5/reference/en/html/entity.html#e
 
 # What is the JPA Naming conversation? (check below pictures)
 
+![jpa_naming_convetion](https://github.com/HuanWangGATECH/chuwa4.1ShortQuestions/blob/huan_wang/assignment5/repository.png)
 
 https://www.java4coding.com/contents/spring/springdatajpa/spring-data-jpa-method-naming-conventions
 
