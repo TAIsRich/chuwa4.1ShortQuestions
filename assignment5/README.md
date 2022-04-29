@@ -192,3 +192,308 @@ update_date
 EmployeeRepository
 OrderRepository
 In your repository code, list all of the CRUD methods from JPA for EmployeeRepository and OrderRepository
+
+
+```java
+package com.example.demo.entity;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.stereotype.Repository;
+
+import javax.persistence.*;
+import java.util.Date;
+
+@Entity
+@Table(name="employees")
+public class Employee {
+    @Id
+    @Column(name="ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    private long id;
+
+    @Column(name="FIRST_NAME")
+    private String firstName;
+
+    @Column(name="LAST_NAME")
+    private String lastName;
+
+    @Column(name="TITLE")
+    private String title;
+
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "create_date")
+    private Date createDate;
+
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "modify_date")
+    private Date modifyDate;
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getModifyDate() {
+        return modifyDate;
+    }
+
+    public void setModifyDate(Date modifyDate) {
+        this.modifyDate = modifyDate;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    //id firstname lastname title
+
+
+
+}
+
+```
+
+
+```
+package com.example.demo.entity;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import javax.persistence.*;
+import java.util.Date;
+
+@Entity
+@Table(name="orders")
+public class Order {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="ORDER_ID")
+    private Long orderId;
+    @Column(name="PRODUCT_NAME")
+    private String product_name;
+    @Column(name="AMOUNT")
+    private Double amount;
+    @Column(name="UNIT_PRICE")
+    private Double unit_price;
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "create_date")
+    private Date createDate;
+
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "modify_date")
+    private Date modifyDate;
+
+
+    public Long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
+    }
+
+    public String getProduct_name() {
+        return product_name;
+    }
+
+    public void setProduct_name(String product_name) {
+        this.product_name = product_name;
+    }
+
+    public Double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
+
+    public Double getUnit_price() {
+        return unit_price;
+    }
+
+    public void setUnit_price(Double unit_price) {
+        this.unit_price = unit_price;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getModifyDate() {
+        return modifyDate;
+    }
+
+    public void setModifyDate(Date modifyDate) {
+        this.modifyDate = modifyDate;
+    }
+}
+
+```
+
+```
+package com.example.demo.repository;
+
+import com.example.demo.entity.Employee;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface EmployeeRepository extends JpaRepository<Employee, Long > {
+    @Override
+    List<Employee> findAll();
+
+    @Override
+    List<Employee> findAll(Sort sort);
+
+    @Override
+    List<Employee> findAllById(Iterable<Long> longs);
+
+    @Override
+    <S extends Employee> List<S> saveAll(Iterable<S> entities);
+
+    @Override
+    void flush();
+
+    @Override
+    <S extends Employee> S saveAndFlush(S entity);
+
+    @Override
+    <S extends Employee> List<S> saveAllAndFlush(Iterable<S> entities);
+
+    @Override
+    default void deleteInBatch(Iterable<Employee> entities) {
+        JpaRepository.super.deleteInBatch(entities);
+    }
+
+    @Override
+    void deleteAllInBatch(Iterable<Employee> entities);
+
+    @Override
+    void deleteAllByIdInBatch(Iterable<Long> longs);
+
+    @Override
+    void deleteAllInBatch();
+
+    @Override
+    Employee getOne(Long aLong);
+
+    @Override
+    Employee getById(Long aLong);
+
+    @Override
+    <S extends Employee> List<S> findAll(Example<S> example);
+
+    @Override
+    <S extends Employee> List<S> findAll(Example<S> example, Sort sort);
+}
+
+```
+
+
+```
+package com.example.demo.repository;
+
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface OrderRepository extends JpaRepository {
+
+    @Override
+    List findAll();
+
+    @Override
+    List findAll(Sort sort);
+
+    @Override
+    List findAllById(Iterable iterable);
+
+    @Override
+    List saveAll(Iterable entities);
+
+    @Override
+    void flush();
+
+    @Override
+    Object saveAndFlush(Object entity);
+
+    @Override
+    List saveAllAndFlush(Iterable entities);
+
+    @Override
+    default void deleteInBatch(Iterable entities) {
+        JpaRepository.super.deleteInBatch(entities);
+    }
+
+    @Override
+    void deleteAllInBatch(Iterable entities);
+
+    @Override
+    void deleteAllByIdInBatch(Iterable iterable);
+
+    @Override
+    void deleteAllInBatch();
+
+    @Override
+    Object getOne(Object o);
+
+    @Override
+    Object getById(Object o);
+
+    @Override
+    List findAll(Example example);
+
+    @Override
+    List findAll(Example example, Sort sort);
+}
+
+```
