@@ -1,0 +1,153 @@
+Week4-ShortQuestions
+
+1. What is POJO and what is Java Bean? What are the differences?
+
+	POJO stands for Plain Old Java Object. It is an ordinary Java object, not bound by any special restriction other than those forced by the Java Language Specification and not requiring any classpath. POJOs are used for increasing the readability and re-usability of a program. POJOs have gained the most acceptance because they are easy to write and understand. 
+
+	Java bean is special types of POJO with some restrictions. All Java Beans are POJOs, but not all POJOs are Java Beans.
+
+	| POJO| Java Bean       |
+	| --------- | ----------- |
+	|It doesn’t have special restrictions other than those forced by Java language.  | It is a special POJO which have some restrictions.|
+	|It doesn’t provide much control on members. | It provides complete control on members.|
+	|It can implement Serializable interface. | It should implement serializable interface.|
+	|Fields can be accessed by their names. | Fields are accessed only by getters and setters.|
+	|Fields can have any visibility. | Fields have only private visibility.|
+	|There may/may-not be a no-arg constructor.| It must have a no-arg constructor.|
+	|It is used when you don’t want to give restriction on your members and give user complete access of your entity | It is used when you want to provide user your entity but only some part of your entity.|
+
+2. What is Hibernate and why we need Hibernate?
+
+	Hibernate is an object-relational mapping tool for the Java programming language. It provides a framework for mapping an object-oriented domain model to a relational database.
+	Hibernate is an open source Object-Relational Persistence and Query service for any Java Application. Hibernate maps Java classes to database tables and from Java data types to SQL data types and relieves the developer from most common data persistence related programming tasks.
+
+	Hibernate reduces lines of code by maintaining object-table mapping itself and returns result to application in form of Java objects. It relieves programmer from manual handling of persistent data, hence reducing the development time and maintenance cost.
+
+3. What is ORM? Why it is helpful?
+
+	ORM stands for Object-Relational Mapping, is a technique to convert data between the object model and relational database.
+
+	Advantages of using ORM:
+		1. model code in one place, reusable for different Database Management Systems
+		2. doesn't require much SQL knowledge, code in your favorite language
+		3. Apply OOP knowledge
+
+
+4. What is Connection Pool? what is the advantage?
+
+	In software engineering, a connection pool is a cache of database connections maintained so that the connections can be reused when future requests to the database are required.
+
+	Connection pools are used to enhance the performance of executing commands on a database. Opening and maintaining a database connection for each user, especially requests made to a dynamic database-driven website application, is costly and wastes resources. In connection pooling, after a connection is created, it is placed in the pool and it is used again so that a new connection does not have to be established. If all the connections are being used, a new connection is made and is added to the pool. Connection pooling also cuts down on the amount of time a user must wait to establish a connection to the database.
+
+5. List all of the annotations about Entity.
+
+	Define a entity class:
+		@Entity: to identify a class as an Entity Class
+		@Table: to map a database table in the same schema of your database
+
+	Basic Column Mapping: 
+		@Id: specify at least one primary key attribute for each entity.
+		@Column:  It is an optional annotation that enables you to customize the mapping between the entity attribute and the database column.
+		@GeneratedValue: generate unique primary key values
+		@SequenceGenerator: 
+		@Enumerated: enables you to define how an enum attribute gets persisted in the database
+		@Temporal: can define if the attribute shall be mapped as an SQL DATE, TIME, or TIMESTAMP.
+		@Lob: can map a BLOB to a byte[] and a CLOB to a String. Your persistence provider then fetches the whole BLOB or CLOB when it initializes the entity attribute.
+		@CreationTimestamp
+		@UpdateTimestamp
+
+	Association Mappings:
+		@OneToOne: One-to-one associations
+		@ManyToOne: defines the owning side of a bidirectional many-to-one/one-to-many association.
+		@OneToMany: define the referencing side of a bidirectional many-to-one/one-to-many association
+		@ManyToMany: can use it to model a unidirectional many-to-many association
+
+6. What is the JPA Naming convention? (check below pictures)
+	
+	rules use keyword to create query method:
+		1. the name of query methods must start with one of the following prefix: find...By, read...By, query...By,count...By, get...By, delete...By, exist...BY
+		2. if want to limit the number of returned query result, we can use Top or First keyword, eg: findFirst2ByName 
+		3. if we want to select the unique result, we have to add the Distinct keyword before the first By word, eg: findDistictByName or findNameDistinctBy
+		4. combine properties expression with And and Or keyword
+
+	for my own understanding: find(get, read, exist,delete, count.etc) + keyword + By + peoperty name + logical keword
+
+7. How many JPA methods you know, list all. (check below pictures)
+	Select: 
+		And           findByLastnameAndFirstname(a, b)
+		Or            findByLastnameOrFirstname(a, b)
+		between       findByDateBetween(a, b)
+		IsNull        findByAgeIsNull()
+		IsNotNUll     findByAgeIsNotNull()
+		NotNull       findByAgeNotNull()
+		OrderBy       findByAgeOrderByLastnameDesc(a)
+		In            findByAgeIn(a[])
+		NotIn         findByAgeNotIn(a[])
+		True          findByActiveTrue()
+		False         findByActiveFalse()
+		IgnoreCase    findByAgeIgnoreCase(a)
+
+	Insert/Update/Delete:
+		count()
+		delete(T entity)
+		deleteAll(T entity)
+		deleteById(Id id)
+		existById(Id id)
+		findAll()
+		findAllById(Iterable<Id> ids)
+		findById(Id id)
+		save(S entity)
+		saveAll(Iterable<S> entities)
+
+8. How to write your own query with parameter?
+	
+	Define a custon query method:
+	1. Native SQL query method
+		public interface AuthorRepository extends JpaRepository<Author, Long> {
+		 
+		    @Query(value = "SELECT * FROM author WHERE first_name = :firstName", nativeQuery = true)
+		    List<Author> findAuthorsByFirstName(@Param("firstName") String firstName);
+		}
+	2. JPQL query method
+
+		public interface AuthorRepository extends JpaRepository<Author, Long> {
+		 
+		    @Query("FROM Author WHERE firstName = ?1")
+		    List<Author> findByFirstName(String firstName);
+		 
+		    @Query("SELECT a FROM Author a WHERE firstName = ?1 AND lastName = ?2")
+		    List<Author> findByFirstNameAndLastName(String firstName, String lastName);
+		 
+		}
+	3. A positional bind parameter gets referenced by its position.In the query, positional bind parameters consist of a `?` followed by a number that specifies the position. 
+		@Query("SELECT a FROM Author a WHERE firstName = :firstName AND lastName = :lastName")
+   		List<Author> findByFirstNameAndLastName(@Param("lastName") String firstName, @Param("firstName") String lastName);
+
+    4. Named bind parameters specify a name for each parameter. In your query, named bind parameters start with a ‘:’ followed by the name of the parameter. 
+
+
+
+9. What is pagination? (check below pictures)
+
+	Pagination is the process of dividing content into several pages. The user has a navigation interface for accessing these pages with specific page links. The navigation often includes previous/next and first/last links.
+
+10. Design two entities and the repository
+	Employee(you can add more fields)
+		id
+		firstname
+		lastname
+		title
+		join_date
+		create_date
+		update_date
+	order
+		id
+		product_name
+		amount
+		unit_price
+		create_date
+		update_date
+
+	EmployeeRepository
+	OrderRepository
+		In your repository code, list all of the CRUD methods from JPA for EmployeeRepository and OrderRepository
