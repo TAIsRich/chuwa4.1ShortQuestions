@@ -317,7 +317,13 @@ public class AbstractFactoryPatternDemo {
 ```
 
 ## 2. Spring Bean
+<https://www.baeldung.com/spring-bean>
 <https://www.javainuse.com/spring/SpringBootInterviewQuestions>
+
+- They are the objects that form the backbone of the user’s application.
+Beans are managed by the Spring IoC container.
+- They are instantiated, configured, wired and managed by a Spring IoC container
+- Beans are created with the configuration metadata that the users supply to the container. 
 
 ## 3. Questions related to previous experience 
 
