@@ -12,24 +12,37 @@
 ```Java
 class Node {
     public boolean isInfected;
-    public List<Node> neighbors;
+    public List<Node> children;
     public Node() {
         isInfected = false;
-        neighbors = new ArrayList<Node>();
+        children = new ArrayList<Node>();
     }
     public Node(boolean _isInfected) {
         isInfected = _isInfected;
-        neighbors = new ArrayList<Node>();
+        children = new ArrayList<Node>();
     }
-    public Node(int _isInfected, ArrayList<Node> _neighbors) {
+    public Node(int _isInfected, ArrayList<Node> _children) {
         isInfected = _isInfected;
-        neighbors = _neighbors;
+        children = _children;
     }
 
     
 }
 
 public class Students{
+    public void addNewStudent(Node s){
+
+    }
+
+    public void setStudentInfected(Node s){
+
+    }
+
+    public Node findCulprit(Node s){
+        
+    }
+
+
     public static void main(String[] args) {
         Node s1 = new Node();
     }
