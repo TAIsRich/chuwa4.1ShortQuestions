@@ -8,6 +8,7 @@
 - b. Some are infected and some are not
 - c. Need to find the culprit (root), who was first got infected
 - d. The person who is infected does not know how they got infected, but the person who infected them knows he infected them.
+git
 
 ```Java
 class Node {

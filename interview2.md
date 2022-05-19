@@ -51,12 +51,9 @@ class Singleton
 ```Java
 // Double Checked Locking based Java implementation of
 // singleton design pattern
-class Singleton
-{
+class Singleton{
 	private static volatile Singleton obj = null;
-
 	private Singleton() {}
-
 	public static Singleton getInstance()
 	{
 		if (obj == null)
